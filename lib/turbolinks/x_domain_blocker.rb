@@ -5,8 +5,8 @@ module Turbolinks
   module XDomainBlocker
     private
       def same_origin?(a, b)
-        a = URI.parse URI.escape(a)
-        b = URI.parse URI.escape(b)
+        a = URI.parse URI::Parser.new.escape(a)
+        b = URI.parse URI::Parser.new.escape(b)
         [a.scheme, a.host, a.port] == [b.scheme, b.host, b.port]
       end
 
